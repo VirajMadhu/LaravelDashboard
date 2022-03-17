@@ -9,28 +9,31 @@
                 </div>
 
                 <div class="py-5">
-                    <form class="w-full max-w-lg p-4" method="POST" action="{{ route('admin.products.store') }}">
+                    <form class="w-full max-w-lg p-4" method="POST"
+                        action="{{ route('admin.products.update', $product) }}">
+
                         @csrf
-                        <!---->
+                        @method('PUT')
+
                         <div class="md:items-center mb-6">
                             <label class="block text-gray-500 font-bold mb-1 md:mb-0 pr-4" for="name">
                                 Product Name
                             </label>
                             <input
                                 class="bg-gray-200 appearance-none border-1 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white"
-                                id="name" name="name" type="text">
+                                id="name" name="name" type="text" value="{{ $product->name }}" />
                             @error('name')
                                 <span class="text-red-400 text-sm">*{{ $message }}</span>
                             @enderror
                         </div>
-                        <!--price-->
+
                         <div class="md:items-center mb-6">
                             <label class="block text-gray-500 font-bold mb-1 md:mb-0 pr-4" for="name">
                                 Price
                             </label>
                             <input
                                 class="bg-gray-200 appearance-none border-1 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white"
-                                id="price" name="price" type="text">
+                                id="price" name="price" type="text" value="{{ $product->price }}" />
                             @error('price')
                                 <span class="text-red-400 text-sm">*{{ $message }}</span>
                             @enderror
@@ -39,7 +42,7 @@
                             <button
                                 class="shadow bg-green-600 hover:bg-green-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                                 type="submit">
-                                Create
+                                Update
                             </button>
                         </div>
                     </form>

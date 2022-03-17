@@ -13,30 +13,35 @@
                         class='mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
                         <thead class="bg-gray-900">
                             <tr class="text-white text-left bg-gray-900">
-                                <th class="font-semibold text-sm uppercase px-6 py-4"> Permission </th>
+                                <th class="font-semibold text-sm uppercase px-6 py-4"> Product Name </th>
+                                <th class="font-semibold text-sm uppercase px-6 py-4"> Price </th>
                                 <th class="font-semibold text-sm uppercase px-6 py-4 text-center"></th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                            <!-- Display Permission -->
-                            @foreach ($permissions as $permission)
+                            <!-- Display products -->
+                            @foreach ($products as $product)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
-                                            {{ $permission->name }}
+                                            {{ $product->name }}
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            {{ $product->price }}
                                         </div>
                                     </td>
                                     <td>
                                         <div class="flex justify-end">
                                             <div class="flex space-x-2">
-                                                <a href="{{ route('admin.permissions.edit', $permission->id) }}"
+                                                <a href="{{ route('admin.products.edit', $product->id) }}"
                                                     class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">
                                                     Edit
                                                 </a>
                                                 <div
                                                     class="px-4 py-2 bg-red-500 hover:bg-red-800 text-white rounded-md">
-                                                    <form
-                                                        action="{{ route('admin.permissions.destroy', $permission->id) }}"
+                                                    <form action="{{ route('admin.products.destroy', $product->id) }}"
                                                         method="post" onsubmit="return confirm('Are you sure?');">
                                                         @csrf
                                                         @method('DELETE')
