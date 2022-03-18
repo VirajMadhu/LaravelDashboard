@@ -25,11 +25,22 @@ Route::get('/', function () {
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+
+// if (Auth::guard('admin')->check()) {
+//     Route::middleware(['auth',])->group(function () {
+//         Route::get('/dashboard', [IndexController::class, 'index'])->name('dashboard');
+//     });
+// } elseif (Auth::guard('user')->check()) {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->middleware(['auth'])->name('dashboard');
+// }
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+
 
 
 Route::middleware(['auth', 'role:super_admin'])->name('admin.')->prefix('admin')->group(function () {
