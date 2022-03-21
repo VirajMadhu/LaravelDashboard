@@ -13,9 +13,16 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js" defer>
+    </script>
 </head>
 
 <body class="font-sans antialiased">
@@ -93,6 +100,9 @@
                     :active="request()->routeIs('admin.products.index')">
                     Products
                 </x-admin-link>
+                <x-admin-link :href="route('admin.books.index')" :active="request()->routeIs('admin.books.index')">
+                    Books
+                </x-admin-link>
 
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
                     <button @click="open = !open"
@@ -129,7 +139,7 @@
             </nav>
         </div>
         <!--Main Content-->
-        <div class="flex w-full bg-slate-50">
+        <div class="flex w-full bg-slate-50 overflow-x-hidden">
             {{ $slot }}
         </div>
     </div>
