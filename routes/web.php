@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BooksController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
@@ -63,6 +64,9 @@ Route::middleware(['auth', 'role:super_admin'])->name('admin.')->prefix('admin')
     Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
     //Products Routes=>
     Route::resource('/products', ProductController::class);
+
+    //Book Routes=>
+    Route::resource('/books', BooksController::class);
 });
 
 require __DIR__ . '/auth.php';
