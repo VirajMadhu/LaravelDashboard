@@ -168,7 +168,7 @@ return [
          * Package Service Providers...
          */
         //Yajra\DataTables\DataTablesServiceProvider::class,
-
+        //Laravel\Socialite\SocialiteServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -193,6 +193,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         //'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        //'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
     ])->toArray(),
 
 ];

@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\GoogleSocialiteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,7 +41,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
+Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
+Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
 
 Route::middleware(['auth', 'role:super_admin'])->name('admin.')->prefix('admin')->group(function () {
